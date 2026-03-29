@@ -31,7 +31,9 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
     { label: "Lokacioni (Kore)",       value: car.location },
   ];
 
-  const waLink = "https://wa.me/38348800006?text=" + encodeURIComponent("Po interesohem per kete veture: " + car.title + "\n" + car.link);
+  const siteUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+  const carUrl = `${siteUrl}/cars/${car.id}`;
+  const waLink = "https://wa.me/38348800006?text=" + encodeURIComponent("Po interesohem per kete veture: " + car.title + "\n" + carUrl);
   const images = car.images && car.images.length > 0 ? car.images : [car.image];
 
   return (
@@ -46,7 +48,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
             <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
-              +383 44 552 412
+              +383 48 800 006
             </a>
           </div>
         </div>
@@ -234,7 +236,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                 >
                   <span>📞</span>
                   <div>
-                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 44 552 412</div>
+                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 48 800 006</div>
                     <div className="text-xs" style={{ color: "#aaa" }}>Telefono tani</div>
                   </div>
                 </a>

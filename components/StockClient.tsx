@@ -122,7 +122,7 @@ export default function StockClient({ allCars }: Props) {
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
             <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
-              +383 44 552 412
+              +383 48 800 006
             </a>
           </div>
         </div>
