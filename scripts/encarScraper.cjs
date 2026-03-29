@@ -35,15 +35,18 @@ const BRAND_MAP = {
 };
 
 const MODEL_MAP = {
+  // Hyundai
   "아반떼": "Avante", "쏘나타": "Sonata", "그랜저": "Grandeur",
   "아이오닉5": "Ioniq 5", "아이오닉6": "Ioniq 6", "아이오닉": "Ioniq",
   "투싼": "Tucson", "싼타페": "Santa Fe", "팰리세이드": "Palisade",
   "코나": "Kona", "넥쏘": "Nexo", "스타리아": "Staria",
   "캐스퍼": "Casper", "벨로스터": "Veloster", "포터": "Porter",
-  "스타렉스": "Starex", "더 뉴 아반떼": "New Avante",
-  "더 뉴 쏘나타": "New Sonata", "더 뉴 그랜저": "New Grandeur",
-  "더 뉴 투싼": "New Tucson", "더 뉴 싼타페": "New Santa Fe",
-  "더 뉴 팰리세이드": "New Palisade", "더 뉴 코나": "New Kona",
+  "스타렉스": "Starex", "그랜드 스타렉스": "Grand Starex",
+  "더 뉴 아반떼": "New Avante", "더 뉴 쏘나타": "New Sonata",
+  "더 뉴 그랜저": "New Grandeur", "더 뉴 투싼": "New Tucson",
+  "더 뉴 싼타페": "New Santa Fe", "더 뉴 팰리세이드": "New Palisade",
+  "더 뉴 코나": "New Kona",
+  // Kia
   "K3": "K3", "K5": "K5", "K7": "K7", "K8": "K8", "K9": "K9",
   "EV6": "EV6", "EV9": "EV9", "스포티지": "Sportage",
   "쏘렌토": "Sorento", "모하비": "Mohave", "카니발": "Carnival",
@@ -52,15 +55,65 @@ const MODEL_MAP = {
   "더 뉴 K5": "New K5", "더 뉴 K7": "New K7",
   "더 뉴 스포티지": "New Sportage", "더 뉴 쏘렌토": "New Sorento",
   "더 뉴 카니발": "New Carnival",
+  // Genesis
   "G70": "G70", "G80": "G80", "G90": "G90",
   "GV70": "GV70", "GV80": "GV80", "GV90": "GV90",
+  // KG Mobility / SsangYong
   "티볼리": "Tivoli", "코란도": "Korando", "렉스턴": "Rexton",
   "무쏘": "Musso", "액티언": "Actyon",
+  // Chevrolet
   "말리부": "Malibu", "크루즈": "Cruze", "스파크": "Spark",
   "트레일블레이저": "Trailblazer", "트랙스": "Trax",
   "이쿼녹스": "Equinox", "올란도": "Orlando", "캡티바": "Captiva",
+  // Renault Korea
   "SM3": "SM3", "SM5": "SM5", "SM6": "SM6", "SM7": "SM7",
   "QM3": "QM3", "QM5": "QM5", "QM6": "QM6",
+  // Foreign models (Korean names)
+  "그랜드 스타렉스": "Grand Starex",
+  "어코드": "Accord", "시빅": "Civic", "CR-V": "CR-V", "HR-V": "HR-V",
+  "마칸": "Macan", "카이엔": "Cayenne", "파나메라": "Panamera",
+  "박스터": "Boxster", "911": "911", "타이칸": "Taycan",
+  "E-클래스": "E-Class", "C-클래스": "C-Class", "S-클래스": "S-Class",
+  "GLC-클래스": "GLC-Class", "GLE-클래스": "GLE-Class", "GLS-클래스": "GLS-Class",
+  "GLA-클래스": "GLA-Class", "GLB-클래스": "GLB-Class", "AMG GT": "AMG GT",
+  "A-클래스": "A-Class", "B-클래스": "B-Class", "CLA-클래스": "CLA-Class",
+  "X1": "X1", "X2": "X2", "X3": "X3", "X4": "X4", "X5": "X5", "X6": "X6", "X7": "X7",
+  "1시리즈": "1 Series", "2시리즈": "2 Series", "3시리즈": "3 Series",
+  "4시리즈": "4 Series", "5시리즈": "5 Series", "6시리즈": "6 Series",
+  "7시리즈": "7 Series", "8시리즈": "8 Series",
+  "A3": "A3", "A4": "A4", "A5": "A5", "A6": "A6", "A7": "A7", "A8": "A8",
+  "Q3": "Q3", "Q5": "Q5", "Q7": "Q7", "Q8": "Q8",
+  "XC40": "XC40", "XC60": "XC60", "XC90": "XC90",
+  "캠리": "Camry", "RAV4": "RAV4", "프리우스": "Prius", "하이랜더": "Highlander",
+  "ES": "ES", "IS": "IS", "RX": "RX", "NX": "NX", "UX": "UX",
+  "더 뉴 300C": "New 300C", "300C": "300C",
+  // More foreign models
+  "트래버스": "Traverse", "콜로라도": "Colorado", "실버라도": "Silverado",
+  "타호": "Tahoe", "서버번": "Suburban",
+  "아테온": "Arteon", "파사트": "Passat", "골프": "Golf", "티구안": "Tiguan",
+  "투아렉": "Touareg", "폴로": "Polo", "제타": "Jetta",
+  "익스플로러": "Explorer", "머스탱": "Mustang", "엣지": "Edge",
+  "레인지로버": "Range Rover", "디스커버리": "Discovery", "디펜더": "Defender",
+  "F-페이스": "F-Pace", "E-페이스": "E-Pace", "I-페이스": "I-Pace",
+  "508": "508", "3008": "3008", "5008": "5008",
+  "모델S": "Model S", "모델3": "Model 3", "모델X": "Model X", "모델Y": "Model Y",
+};
+
+// Korean badge/trim word translations
+const BADGE_WORD_MAP = {
+  "가솔린": "Gasoline", "디젤": "Diesel", "전기": "Electric",
+  "하이브리드": "Hybrid", "수소": "Hydrogen", "LPi": "LPi", "LPG": "LPG",
+  "시그니처": "Signature", "프레스티지": "Prestige", "노블레스": "Noblesse",
+  "익스클루시브": "Exclusive", "프리미엄": "Premium", "럭셔리": "Luxury",
+  "얼티메이트": "Ultimate", "인스퍼레이션": "Inspiration", "인텔리전트": "Intelligent",
+  "그래비티": "Gravity", "다이나믹": "Dynamic", "어드밴스드": "Advanced",
+  "스마트": "Smart", "모던": "Modern", "트렌디": "Trendy", "스타일": "Style",
+  "투어링": "Touring", "어반": "Urban", "스포츠": "Sport", "쿠페": "Coupe",
+  "왜건": "Wagon", "컨버터블": "Convertible", "카브리올레": "Cabriolet",
+  "브라이트": "Bright", "블랙": "Black", "화이트": "White",
+  "콰트로": "quattro", "매틱": "matic", "밴": "Van",
+  "인승": "-seat", "더 뉴": "",
+  "AWD": "AWD", "2WD": "2WD", "4WD": "4WD", "4MATIC": "4MATIC",
 };
 
 const FUEL_MAP = {
@@ -86,6 +139,37 @@ function translateModel(k) {
 }
 
 function translateFuel(k) { return FUEL_MAP[k] || k; }
+
+// Translate a badge/trim string to clean English
+function translateBadge(raw) {
+  if (!raw) return "";
+  let s = raw;
+
+  // "N세대" → "Gen N"
+  s = s.replace(/(\d+)세대/g, "Gen $1");
+  // "N인승" → "N-seat"
+  s = s.replace(/(\d+)인승/g, "$1-seat");
+
+  // Replace known Korean words word by word
+  const words = s.split(/\s+/);
+  const translated = words.map(function(w) {
+    if (BADGE_WORD_MAP[w] !== undefined) return BADGE_WORD_MAP[w];
+    // Partial match
+    for (const key of Object.keys(BADGE_WORD_MAP)) {
+      if (w === key) return BADGE_WORD_MAP[key];
+    }
+    return w;
+  });
+
+  s = translated.join(" ");
+
+  // Strip remaining Korean characters
+  s = s.replace(/[\uAC00-\uD7A3\u3130-\u318F\u1100-\u11FF]+/g, "");
+
+  // Clean up extra spaces and trailing/leading punctuation
+  s = s.replace(/\s+/g, " ").trim();
+  return s;
+}
 
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
@@ -203,12 +287,25 @@ function parseCar(raw) {
 
   const brand = translateBrand(raw.Manufacturer || "");
   const model = translateModel(raw.Model || "");
-  const badge = raw.Badge || "";
-  const badgeDetail = raw.BadgeDetail || "";
+  const badge = translateBadge(raw.Badge || "");
+  const badgeDetail = translateBadge(raw.BadgeDetail || "");
   const fuel = translateFuel(raw.FuelType || "");
 
-  const title = [brand, model, badge, badgeDetail]
+  let title = [brand, model, badge, badgeDetail]
     .map((s) => s.trim()).filter((s) => s.length > 0).join(" ");
+
+  // Final pass: handle generation/seat patterns and strip any leftover Korean
+  title = title.replace(/(\d+)세대/g, "Gen $1");
+  title = title.replace(/(\d+)인승/g, "$1-seat");
+  // Translate any remaining Korean words using BADGE_WORD_MAP
+  title = title.split(/\s+/).map(function(w) {
+    return BADGE_WORD_MAP[w] !== undefined ? BADGE_WORD_MAP[w] : w;
+  }).join(" ");
+  // Strip remaining Korean characters entirely
+  title = title.replace(/[\uAC00-\uD7A3\u3130-\u318F\u1100-\u11FF]+/g, "");
+  // Remove empty parentheses left after Korean removal
+  title = title.replace(/\(\s*\)/g, "");
+  title = title.replace(/\s+/g, " ").trim();
 
   if (!title || title.length < 2) return null;
 
