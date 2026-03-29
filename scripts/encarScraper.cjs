@@ -94,6 +94,7 @@ const MODEL_MAP = {
   "아테온": "Arteon", "파사트": "Passat", "골프": "Golf", "티구안": "Tiguan",
   "투아렉": "Touareg", "폴로": "Polo", "제타": "Jetta",
   "익스플로러": "Explorer", "머스탱": "Mustang", "엣지": "Edge",
+  "브롱코": "Bronco", "레인저": "Ranger", "F-150": "F-150",
   "레인지로버": "Range Rover", "디스커버리": "Discovery", "디펜더": "Defender",
   "F-페이스": "F-Pace", "E-페이스": "E-Pace", "I-페이스": "I-Pace",
   "508": "508", "3008": "3008", "5008": "5008",
@@ -321,6 +322,7 @@ function parseCar(raw) {
   // Final pass: handle generation/seat patterns and strip any leftover Korean
   title = title.replace(/(\d+)세대/g, "Gen $1");
   title = title.replace(/(\d+)인승/g, "$1-seat");
+  title = title.replace(/(\d+)도어/g, "");  // remove "5도어" etc — not needed in title
   // Check MODEL_MAP for any remaining Korean substrings
   for (const key of Object.keys(MODEL_MAP)) {
     if (/[\uAC00-\uD7A3]/.test(key) && title.includes(key)) {
