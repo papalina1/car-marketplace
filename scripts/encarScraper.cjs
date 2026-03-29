@@ -322,6 +322,10 @@ console.log("\n📸 Finding all photos for each car...");
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(allCars, null, 2), "utf-8");
 
+  const avgPhotos = allCars.length > 0
+    ? (allCars.reduce((sum, c) => sum + (c.images?.length || 0), 0) / allCars.length).toFixed(1)
+    : 0;
+
   console.log("\n📊 Summary:");
   console.log("   Total cars  : " + allCars.length);
   console.log("   Avg photos  : " + avgPhotos);
@@ -386,11 +390,26 @@ async function fetchCarReport(browser, carId) {
 
       const ownerMatch = text.match(/번호\s*\/\s*소유자 변경이력\s*(\d+)회(\d+)회/);
 
+      function extractSpecialAccident(keyword) {
+        const regex = new RegExp(keyword + "\\s*(\\d+)회(?:\\s*([\\d,]+)원)?");
+        const match = text.match(regex);
+        if (!match || parseInt(match[1]) === 0) return { count: 0, amount: null };
+        return {
+          count: parseInt(match[1]),
+          amount: match[2] ? match[2] + "원" : null,
+        };
+      }
+
+      const totalLossData = extractSpecialAccident("전손");
+      const floodData = extractSpecialAccident("침수\\(전손,분손\\)");
+
       return {
         myCarAccident: myCar,
         otherCarAccident: otherCar,
-        totalLoss: text.includes("전손") && !text.includes("전손 0회"),
-        flood: text.includes("침수") && !text.includes("침수(전손,분손) 0회"),
+        totalLoss: totalLossData.count > 0,
+        totalLossAmount: totalLossData.amount,
+        flood: floodData.count > 0,
+        floodAmount: floodData.amount,
         ownerChanges: ownerMatch ? parseInt(ownerMatch[2]) : null,
         reportUrl: "https://fem.encar.com/cars/report/accident/" + window.location.pathname.split("/").pop(),
       };

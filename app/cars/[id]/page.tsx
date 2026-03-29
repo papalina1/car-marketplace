@@ -155,6 +155,11 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                   <ReportCell
                     label="Dëmtim total / Përmbytje"
                     value={car.report.totalLoss || car.report.flood ? "Po" : "Jo"}
+                    amount={(car.report.totalLoss && car.report.totalLossAmount)
+                      ? car.report.totalLossAmount
+                      : (car.report.flood && car.report.floodAmount)
+                      ? car.report.floodAmount
+                      : null}
                     ok={!car.report.totalLoss && !car.report.flood}
                   />
                 </div>

@@ -19,7 +19,9 @@ export interface Car {
     myCarAccident: { count: number; amount: string | null } | null;
     otherCarAccident: { count: number; amount: string | null } | null;
     totalLoss: boolean;
+    totalLossAmount?: string | null;
     flood: boolean;
+    floodAmount?: string | null;
     ownerChanges: number | null;
     reportUrl: string;
   } | null;
