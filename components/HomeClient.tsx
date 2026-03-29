@@ -111,7 +111,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
               <a href="https://www.instagram.com/premiumcars_korea/" target="_blank" rel="noopener noreferrer" style={{ transition: "color .15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#cc001e")} onMouseLeave={e => (e.currentTarget.style.color = "#666")}>Instagram</a>
               <a href="https://www.tiktok.com/@premiumcars.korea" target="_blank" rel="noopener noreferrer" style={{ transition: "color .15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#cc001e")} onMouseLeave={e => (e.currentTarget.style.color = "#666")}>TikTok</a>
               <span style={{ color: "#d9d9d9" }}>|</span>
-              <a href="tel:+38344552412" className="font-semibold" style={{ color: "#cc001e" }}>+383 44 552 412</a>
+              <a href="tel:+38348800006" className="font-semibold" style={{ color: "#cc001e" }}>+383 44 552 412</a>
             </div>
           </div>
         </div>
@@ -388,7 +388,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: "#aaa" }}>Kontakt</p>
               <div className="space-y-2 text-sm" style={{ color: "#777" }}>
-                <p><a href="tel:+38344552412" style={{ color: "#777", textDecoration: "none" }}>+383 44 552 412</a></p>
+                <p><a href="tel:+38348800006" style={{ color: "#777", textDecoration: "none" }}>+383 44 552 412</a></p>
                 <p><a href="tel:+38349528990" style={{ color: "#777", textDecoration: "none" }}>+383 49 528 990</a></p>
                 <p style={{ color: "#777" }}>Fushë Kosovë, Rr. Nënë Tereza</p>
                 <p style={{ color: "#777" }}>premiumcars_korea</p>

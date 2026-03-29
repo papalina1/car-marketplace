@@ -31,7 +31,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
     { label: "Lokacioni (Kore)",       value: car.location },
   ];
 
-  const waLink = "https://wa.me/38344552412?text=Po%20interesohem%20per%20kete%20veture:%20" + encodeURIComponent(car.title);
+  const waLink = "https://wa.me/38348800006?text=Po%20interesohem%20per%20kete%20veture:%20" + encodeURIComponent(car.title);
   const images = car.images && car.images.length > 0 ? car.images : [car.image];
 
   return (
@@ -45,7 +45,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               <span className="font-black text-xl tracking-tight" style={{ color: "#cc001e" }}>PREMIUM</span>
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
-            <a href="tel:+38344552412" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
+            <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
               +383 44 552 412
             </a>
           </div>
@@ -221,7 +221,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               <h2 className="font-bold text-sm mb-4" style={{ color: "#181818" }}>Na Kontaktoni</h2>
               <div className="space-y-2">
                 <a
-                  href="tel:+38344552412"
+                  href="tel:+38348800006"
                   className="flex items-center gap-3 text-sm"
                   style={{
                     padding: "10px 12px",

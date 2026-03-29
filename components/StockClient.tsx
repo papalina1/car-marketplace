@@ -121,7 +121,7 @@ export default function StockClient({ allCars }: Props) {
               <span className="font-black text-xl tracking-tight" style={{ color: "#cc001e" }}>PREMIUM</span>
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
-            <a href="tel:+38344552412" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
+            <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
               +383 44 552 412
             </a>
           </div>
