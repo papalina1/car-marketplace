@@ -1,0 +1,522 @@
+{
+  "apiCalls": [
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/dc/dc_carsearchlist.do?carType=kor"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/css/common.css?v=1774474956142"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/css/listview.css?v=1774474956142"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/css/dc.css?v=1774474956142"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/ui/ui.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/prototype.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/banner/searchDataForBanner.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/common/util.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/common/common_menu.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/menu/dc_menu.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/json/json2.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/helper/utils.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/commons.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/jquery/jquery-1.11.3.min.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/common/jquery.scrollbar.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/requirejs/require.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://static.encar.com/common/webfonts/css/pretendard.css"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.encar.com/co/loginCheck.do"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_gnb24.png?2507161748"
+    },
+    {
+      "method": "GET",
+      "url": "https://static.encar.com/common/webfonts/font/Pretendard-Medium.subset.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://static.encar.com/common/webfonts/font/Pretendard-Bold.subset.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://static.encar.com/common/webfonts/font/Pretendard-SemiBold.subset.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://static.encar.com/common/sdk/enchat/enchat-1.1.0.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/940324643/?random=1774735002305&cv=9&fst=1774735002305&num=1&guid=ON&resp=GooglemKTybQhCsO&eid=376635471%2C375603260%2C466465925%2C512247839%2C658953495&u_h=900&u_w=1280&ig=1&frm=0&url=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&tiba=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&hn=www.googleadservices.com&rfmt=3&fmt=4"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_common_search.png?2505301820"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_footer.png?2003271528"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/icon/bar_1pxh10_gray.gif"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/app/layout/the-widgets.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/app/dc/dc_carsearchnew_l01.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.google.com/pagead/1p-user-list/940324643/?random=1774735002305&cv=9&fst=1774731600000&num=1&guid=ON&resp=GooglemKTybQhCsO&eid=376635471%2C375603260%2C466465925%2C512247839%2C658953495&u_h=900&u_w=1280&ig=1&frm=0&url=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&tiba=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&hn=www.googleadservices.com&rfmt=3&fmt=3&is_vtc=1&cid=CAQSyQEABaugfeajXhqCgdYiKrY-cmtdR70pFn7o2pUe1C6Y9ra6YxTerR1L8vvm4IrJy8E1_Q1x2oRygQsqhJXFnwzCz1H_t9ta_YbEtf44xI7Ocvym3AWaBKUG15qWQ4xNT6YQt35rVsqczFRvi5rDJIjBO6YeS8PaG1JeXLpwxSni8HmoTtuCGX6emgaw3WckNDCb-Z3wnXFS8ekBjYHw3_RK-STNf-lcI9T8tCtGmO-ZEIshfDg0HiRkpLTKBgEPXNhyY5D7WMxXco0&random=3368801733&resp=GooglemKTybQhCsO&rmt_tld=0&ipr=y"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.google.al/pagead/1p-user-list/940324643/?random=1774735002305&cv=9&fst=1774731600000&num=1&guid=ON&resp=GooglemKTybQhCsO&eid=376635471%2C375603260%2C466465925%2C512247839%2C658953495&u_h=900&u_w=1280&ig=1&frm=0&url=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&tiba=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&hn=www.googleadservices.com&rfmt=3&fmt=3&is_vtc=1&cid=CAQSyQEABaugfeajXhqCgdYiKrY-cmtdR70pFn7o2pUe1C6Y9ra6YxTerR1L8vvm4IrJy8E1_Q1x2oRygQsqhJXFnwzCz1H_t9ta_YbEtf44xI7Ocvym3AWaBKUG15qWQ4xNT6YQt35rVsqczFRvi5rDJIjBO6YeS8PaG1JeXLpwxSni8HmoTtuCGX6emgaw3WckNDCb-Z3wnXFS8ekBjYHw3_RK-STNf-lcI9T8tCtGmO-ZEIshfDg0HiRkpLTKBgEPXNhyY5D7WMxXco0&random=3368801733&resp=GooglemKTybQhCsO&rmt_tld=1&ipr=y"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/helper/jquery-broker.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/widget/widget.recently-viewed.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/widget/widget.zzim.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/widget/widget.compare.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/widget/widget.abstract.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/cookies/dist/cookies.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/sammy/sammy-0.7.6.min.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/carsearch/carsearch.application.car.dc.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/knockout/switch-case/knockout-switch-case.min.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/knockout/repeat/knockout-repeat.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/common/nethru/wl6.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/carsearch/carsearch.application.car.abstract.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.main.car.dc.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/knockout/knockout-3.4.0.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://nethru.encar.com/wlo/Logging?dv=1075723763|ver=1.0.0|sid=www.encar.com|r=https://www.encar.com/dc/dc_carsearchlist.do?carType=kor%23!%257B%2522action%2522%253A%2522(And.Hidden.N._.CarType.Y.)%2522%252C%2522toggle%2522%253A%257B%257D%252C%2522layer%2522%253A%2522%2522%252C%2522sort%2522%253A%2522ModifiedDate%2522%252C%2522page%2522%253A1%252C%2522limit%2522%253A20%257D|rf=|c=PCID=17747350028885254321773;%20n_ss=1280x900;%20n_cs=ko-kr;%20|a=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/120.0.0.0%20Safari/537.36"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=815995780&t=pageview&_s=1&dl=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&ul=ko-kr&dt=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&sr=1280x900&vp=1265x885&_u=YEBAAAABAAAAAC~&jid=1952090707&gjid=1913398867&cid=2137418332.1774735003&tid=UA-56065139-3&_gid=1989683361.1774735003&_r=1&_slc=1&gtm=45He63p1n71W9QQ2Tv6915879za200zd6915879&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469~116991817~117484252&z=12032318"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-WY0RWR65ED&gtm=45je63p1v9126308069za20g&_p=1774735002304&gcd=13l3l3l3l2l1&npa=0&dma=0&ul=ko-kr&sr=1280x900&cid=2137418332.1774735003&ir=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EBAI&_s=1&tag_exp=0~115938465~115938469~116133313~117266400~117484252&dl=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&dt=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&sid=1774735003&sct=1&seg=0&_tu=wAQ&en=page_view&_fv=1&_ss=1&_ee=1&tfd=4627"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.main.car.abstract.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/carsearch/carsearch.application.broker.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.contents.car.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/doT/doT.min.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.action-log-collector.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/helper/ko-broker.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://bc.ad.daum.net/bc?d=%7B%22track_id%22%3A%226315438720142102521%22%2C%22event_code%22%3A%22PageView%22%2C%22params%22%3A%7B%7D%2C%22props%22%3A%7B%22lmt%22%3A%22N%22%7D%2C%22site%22%3A%7B%22identifier%22%3A%22www.encar.com%22%7D%2C%22sdk%22%3A%7B%22type%22%3A%22WEB%22%2C%22version%22%3A%221.6.4%22%2C%22tpc%22%3A%22Y%22%7D%2C%22page%22%3A%7B%22url%22%3A%22https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor%23!%257B%2522action%2522%253A%2522(And.Hidden.N._.CarType.Y.)%2522%252C%2522toggle%2522%253A%257B%257D%252C%2522layer%2522%253A%2522%2522%252C%2522sort%2522%253A%2522ModifiedDate%2522%252C%2522page%2522%253A1%252C%2522limit%2522%253A20%257D%22%2C%22is_frame_env%22%3Afalse%7D%2C%22device%22%3A%7B%22dnt%22%3A%22N%22%2C%22device_type%22%3A%22pc%22%2C%22is_mobile%22%3A%22N%22%2C%22browser%22%3A%22Chromium%22%2C%22browser_version%22%3A%22145.0.7632.6%22%2C%22os%22%3A%22Windows%22%2C%22os_version%22%3A%2210.0%22%7D%7D"
+    },
+    {
+      "method": "GET",
+      "url": "https://connect.facebook.net/signals/config/2582597645321002?v=2.9.285&r=stable&domain=www.encar.com&hme=12c8cdc903a327d6c396005880a21a0a6c955fe6b6fb47b10c9022424ec9b3ee&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.facebook.com/tr/?id=2582597645321002&ev=PageView&dl=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor%23!%257B%2522action%2522%253A%2522(And.Hidden.N._.CarType.Y.)%2522%252C%2522toggle%2522%253A%257B%257D%252C%2522layer%2522%253A%2522%2522%252C%2522sort%2522%253A%2522ModifiedDate%2522%252C%2522page%2522%253A1%252C%2522limit%2522%253A20%257D&rl=&if=false&ts=1774735003898&sw=1280&sh=900&v=2.9.285&r=stable&ec=0&o=4126&fbp=fb.1.1774735003895.729933145624687032&eid=ob3_plugin-set_8e00f2d29959facdfab0eecc21de01b6dcee82ae3240e1db07d19a553a602121&ler=empty&cdl=API_unavailable&pmd[title]=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&pmd[locale]=ko&pmd[description]=%EB%82%B4%20%EC%B0%A8%2C%20%ED%8C%90%EB%A7%A4%EB%B6%80%ED%84%B0%20%EA%B5%AC%EB%A7%A4%EA%B9%8C%EC%A7%80.%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%8A%94%20%EC%97%94%EC%B9%B4%EB%AF%BF%EA%B3%A0%20%ED%95%A8%EA%BB%98%ED%95%B4%EC%9A%94.&pmd[keywords]=%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%A7%A4%EB%A7%A4%EC%82%AC%EC%9D%B4%ED%8A%B8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EC%82%AC%EC%9D%B4%ED%8A%B8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%A7%A4%EB%A7%A4%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%ED%8C%90%EB%A7%A4&plt=3393.300000000745&it=1774735003755&coo=false&cf=1&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=GET"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=2582597645321002&ev=PageView&dl=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor%23!%257B%2522action%2522%253A%2522(And.Hidden.N._.CarType.Y.)%2522%252C%2522toggle%2522%253A%257B%257D%252C%2522layer%2522%253A%2522%2522%252C%2522sort%2522%253A%2522ModifiedDate%2522%252C%2522page%2522%253A1%252C%2522limit%2522%253A20%257D&rl=&if=false&ts=1774735003898&sw=1280&sh=900&v=2.9.285&r=stable&ec=0&o=4126&fbp=fb.1.1774735003895.729933145624687032&eid=ob3_plugin-set_8e00f2d29959facdfab0eecc21de01b6dcee82ae3240e1db07d19a553a602121&ler=empty&cdl=API_unavailable&pmd[title]=%EA%B5%AD%EC%82%B0%EC%B0%A8%20%EA%B2%80%EC%83%89%20%7C%20%EB%82%B4%EC%B0%A8%ED%8C%94%EA%B8%B0%C2%B7%EB%82%B4%EC%B0%A8%EC%82%AC%EA%B8%B0&pmd[locale]=ko&pmd[description]=%EB%82%B4%20%EC%B0%A8%2C%20%ED%8C%90%EB%A7%A4%EB%B6%80%ED%84%B0%20%EA%B5%AC%EB%A7%A4%EA%B9%8C%EC%A7%80.%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%8A%94%20%EC%97%94%EC%B9%B4%EB%AF%BF%EA%B3%A0%20%ED%95%A8%EA%BB%98%ED%95%B4%EC%9A%94.&pmd[keywords]=%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%A7%A4%EB%A7%A4%EC%82%AC%EC%9D%B4%ED%8A%B8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EC%82%AC%EC%9D%B4%ED%8A%B8%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%EB%A7%A4%EB%A7%A4%2C%20%EC%A4%91%EA%B3%A0%EC%B0%A8%ED%8C%90%EB%A7%A4&plt=3393.300000000745&it=1774735003755&coo=false&cf=1&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=FGET"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/helper/cacheable.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/carsearch/carsearch.application.abstract.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/carsearch/carsearch.application.abstract-for_xp.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.main.abstract.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/my/my_membersummary.do?method=getRecentViewCarListCnt"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/my/my_membersummary.do?method=getZzimCarList"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_common_widget.png?2504181657"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/icon/photo_s.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.recent-navigation.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.circuit-paging.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/module/cmm/analytics.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/lib/jquery/plugin/iecors/jquery.iecors.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/js/encarapp/model/search/search.ryvuss.client.js?v=1774474958275"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/my/my_membersummary.do?method=getZzimCarList"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.encar.com/search/car/list/general?count=true&q=(And.Hidden.N._.CarType.Y.)&inav=%7CMetadata%7CSort"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.encar.com/search/car/list/general?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.AdType.A.)&sr=%7CModifiedDate%7C0%7C8"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y.)&sr=%7CModifiedDate%7C0%7C20"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.encar.com/search/car/list/general?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.(Or.ServiceMark.EncarDiagnosisP0._.ServiceMark.EncarDiagnosisP1._.ServiceMark.EncarDiagnosisP2.))&sr=%7CExtendWarranty%7C0%7C4"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/banner.do?method=getFuel"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/mocha.do?method=carListDisplay&carType=kor"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/mg/post.do?method=carListSidePost"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.encar.com/dc/dc_ajaxstatscount.do?method=logRyvussAction"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_common_zzim.png?2506091922"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_service_tag.png?2602191712"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_service_label.png?2504221347"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/spr/spr_hotmark.png?2504290936"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/list/btn_list_next.gif?170925"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/icon/photo_m.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/icon/photo_w.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/transparent.gif"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture07/pic4027/40271635_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20250812064316"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture09/pic4169/41699104_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260320015612"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture03/pic4163/41639472_027.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260311015624"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture02/pic4172/41721302_027.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260324055619"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture01/pic4061/40614142_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20250924090856"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture04/pic4154/41542846_027.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260224065513"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture09/pic4169/41699110_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260320014814"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture05/pic4165/41655530_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260316023503"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture07/pic4027/40271635_007.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20250812064316"
+    },
+    {
+      "method": "GET",
+      "url": "https://ci.encar.com/carpicture/carpicture03/pic4163/41633147_001.jpg?impolicy=heightRate&rh=192&cw=320&ch=192&cg=Center&wtmk=https://ci.encar.com/wt_mark/w_mark_04.png&wtmkg=SouthEast&wtmkw=70&wtmkh=30&t=20260310091909"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/list/btn_list_next.gif"
+    },
+    {
+      "method": "GET",
+      "url": "https://nethru.encar.com/wlo/Logging?dv=335251676|ver=1.0.0|sid=www.encar.com|r=https://www.encar.com/dc/dc_carsearchlist.do?carType=kor%23!%257B%2522action%2522%253A%2522(And.Hidden.N._.CarType.Y.)%2522%252C%2522toggle%2522%253A%257B%257D%252C%2522layer%2522%253A%2522%2522%252C%2522sort%2522%253A%2522ModifiedDate%2522%252C%2522page%2522%253A1%252C%2522limit%2522%253A20%257D|rf=|c=PCID=17747350028885254321773;%20n_ss=1280x900;%20n_cs=ko-kr;%20|a=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/120.0.0.0%20Safari/537.36"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/banner.do?method=banner10&pageid=dc_carsearch&price=&make=&modelGroup=&category=&mileage=&mileageLowerBound=&mileageUpperBound=&mileageValue=&priceLowerBound=&priceUpperBound=&priceValue=&year=&yearRange=&fuel=&officeCityState=&date=1774735006342"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/banner.do?method=carListBottom&pageid=dc_carsearch&price=&make=&modelGroup=&category=&mileage=&mileageLowerBound=&mileageUpperBound=&mileageValue=&priceLowerBound=&priceUpperBound=&priceValue=&year=&yearRange=&fuel=&officeCityState=&date=1774735006342"
+    },
+    {
+      "method": "GET",
+      "url": "https://automotive.encar.com/RealMedia/ads/adstream_sx.ads/encar.com/dc_list@Bottom1?pageid=dc&company=&modelGroup="
+    },
+    {
+      "method": "GET",
+      "url": "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://automotive.encar.com/RealMedia/ads/adstream_jx.ads/encar.com/dc_list@TopRight,Top1?pageid=dc&company=&modelGroup="
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202506/kamaru/kamaru_listwide_250624.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/lexus_used/lexus_used_listex_default_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202312/lexus_cpo/lexus_cpo_listex_object_231212.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/lexus_used/lexus_used_listex_expand_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/toyota_cpo/toyota_cpo_rtss_list_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/lexus_used/lexus_used_listex_default_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202312/lexus_cpo/lexus_cpo_listex_object_231212.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/lexus_used/lexus_used_listex_expand_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/list/bg_ad_mouse2.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/list/bg_ad_mouse2_on.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202602/toyota_cpo/toyota_cpo_rtss_list_260203.jpg"
+    },
+    {
+      "method": "GET",
+      "url": "https://automotive.encar.com/RealMedia/ads/adstream_sx.ads/www.encar.com/dc_list@x25"
+    },
+    {
+      "method": "GET",
+      "url": "https://automotive.encar.com/RealMedia/ads/adstream_sx.ads/www.encar.com/dc_list@x26"
+    },
+    {
+      "method": "GET",
+      "url": "https://automotive.encar.com/RealMedia/ads/adstream_sx.ads/www.encar.com/dc_list@x27"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.encar.com/images/common/list/quick_imgs.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202505/encar/dbdirect_insur_btn_list.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202505/encar/samsungfire_direct_insur_btn_list.png"
+    },
+    {
+      "method": "GET",
+      "url": "https://daimg.encar.com/da/202505/encar/hds_capital_btn_list.png"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-WY0RWR65ED&gtm=45je63p1v9126308069za20g&_p=1774735002304&gcd=13l3l3l3l2l1&npa=0&dma=0&ul=ko-kr&sr=1280x900&cid=2137418332.1774735003&ir=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EBAIAAQ&_s=2&tag_exp=0~115938465~115938469~116133313~117266400~117484252&dl=https%3A%2F%2Fwww.encar.com%2Fdc%2Fdc_carsearchlist.do%3FcarType%3Dkor&dt=%EC%97%94%EC%B9%B4%EB%AF%BF%EA%B3%A0%20%EA%B5%AD%EC%82%B0%20%EC%A4%91%EA%B3%A0%EC%B0%A8&sid=1774735003&sct=1&seg=1&_tu=wAQ&en=page_view&_ee=1&_et=2743&tfd=12374"
+    }
+  ],
+  "apiResponses": [
+    {
+      "url": "https://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8",
+      "preview": "{\"Count\":21634,\"SearchResults\":[{\"Id\":\"40271635\",\"Separation\":[\"B\"],\"Trust\":[],\"ServiceMark\":[],\"Condition\":[\"Inspection\",\"Record\",\"Resume\"],\"Photo\":\"/carpicture07/pic4027/40271635_\",\"Photos\":[{\"type\":\"001\",\"location\":\"/carpicture07/pic4027/40271635_001.jpg\",\"updatedDate\":\"2025-08-12T04:43:16Z\",\"ordering\":1},{\"type\":\"003\",\"location\":\"/carpicture07/pic4027/40271635_003.jpg\",\"updatedDate\":\"2025-08-12T04:43:16Z\",\"ordering\":3},{\"type\":\"004\",\"location\":\"/carpicture07/pic4027/40271635_004.jpg\",\"update"
+    },
+    {
+      "url": "https://api.encar.com/search/car/list/general?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.(Or.ServiceMark.EncarDiagnosisP0._.ServiceMark.EncarDiagnosisP1._.ServiceMark.EncarDiagnosisP2.))&sr=%7CExtendWarranty%7C0%7C4",
+      "preview": "{\"Count\":111499,\"SearchResults\":[{\"Id\":\"41637081\",\"Separation\":[\"B\"],\"Trust\":[\"ExtendWarranty\",\"HomeService\"],\"ServiceMark\":[\"EncarMeetgo\",\"EncarDiagnosisP1\"],\"Condition\":[\"Inspection\",\"Record\",\"Resume\"],\"Photo\":\"/carpicture03/pic4163/41633147_\",\"Photos\":[{\"type\":\"001\",\"location\":\"/carpicture03/pic4163/41633147_001.jpg\",\"updatedDate\":\"2026-03-10T08:19:09Z\",\"ordering\":1},{\"type\":\"003\",\"location\":\"/carpicture03/pic4163/41633147_003.jpg\",\"updatedDate\":\"2026-03-10T08:19:09Z\",\"ordering\":3},{\"type\":\"0"
+    },
+    {
+      "url": "https://api.encar.com/search/car/list/general?count=true&q=(And.(And.Hidden.N._.CarType.Y.)_.AdType.A.)&sr=%7CModifiedDate%7C0%7C8",
+      "preview": "{\"Count\":20198,\"SearchResults\":[{\"Id\":\"40271635\",\"Separation\":[\"B\"],\"Trust\":[],\"ServiceMark\":[],\"Condition\":[\"Inspection\",\"Record\",\"Resume\"],\"Photo\":\"/carpicture07/pic4027/40271635_\",\"Photos\":[{\"type\":\"001\",\"location\":\"/carpicture07/pic4027/40271635_001.jpg\",\"updatedDate\":\"2025-08-12T04:43:16Z\",\"ordering\":1},{\"type\":\"003\",\"location\":\"/carpicture07/pic4027/40271635_003.jpg\",\"updatedDate\":\"2025-08-12T04:43:16Z\",\"ordering\":3},{\"type\":\"004\",\"location\":\"/carpicture07/pic4027/40271635_004.jpg\",\"update"
+    },
+    {
+      "url": "https://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y.)&sr=%7CModifiedDate%7C0%7C20",
+      "preview": "{\"Count\":149563,\"SearchResults\":[{\"Id\":\"41637081\",\"Separation\":[\"B\"],\"Trust\":[\"ExtendWarranty\",\"HomeService\"],\"ServiceMark\":[\"EncarMeetgo\",\"EncarDiagnosisP1\"],\"Condition\":[\"Inspection\",\"Record\",\"Resume\"],\"Photo\":\"/carpicture03/pic4163/41633147_\",\"Photos\":[{\"type\":\"001\",\"location\":\"/carpicture03/pic4163/41633147_001.jpg\",\"updatedDate\":\"2026-03-10T08:19:09Z\",\"ordering\":1},{\"type\":\"003\",\"location\":\"/carpicture03/pic4163/41633147_003.jpg\",\"updatedDate\":\"2026-03-10T08:19:09Z\",\"ordering\":3},{\"type\":\"0"
+    }
+  ]
+}
