@@ -31,6 +31,7 @@ const BRAND_MAP = {
   "BYD": "BYD", "폴스타": "Polestar", "스마트": "Smart",
   "동풍소콘": "Dongfeng Sokon", "기타 제조사": "Other", "기타제조사": "Other",
   "애스턴마틴": "Aston Martin", "이네오스": "Ineos",
+  "맥라렌": "McLaren", "페라리": "Ferrari", "람보르기니": "Lamborghini",
   "볼보코리아": "Volvo Korea", "재규어/랜드로버": "Jaguar Land Rover",
 };
 
@@ -97,6 +98,29 @@ const MODEL_MAP = {
   "F-페이스": "F-Pace", "E-페이스": "E-Pace", "I-페이스": "I-Pace",
   "508": "508", "3008": "3008", "5008": "5008",
   "모델S": "Model S", "모델3": "Model 3", "모델X": "Model X", "모델Y": "Model Y",
+  "모델 S": "Model S", "모델 3": "Model 3", "모델 X": "Model X", "모델 Y": "Model Y",
+  // Jeep
+  "랭글러": "Wrangler", "체로키": "Cherokee", "그랜드 체로키": "Grand Cherokee",
+  "컴패스": "Compass", "레니게이드": "Renegade",
+  // MINI
+  "쿠퍼": "Cooper", "쿠퍼 클럽맨": "Cooper Clubman", "쿠퍼 컨트리맨": "Cooper Countryman",
+  "쿠퍼 페이스맨": "Cooper Paceman", "쿠퍼 S": "Cooper S",
+  // Lexus
+  "뉴 ES300h": "ES300h", "뉴 ES": "ES", "뉴 IS": "IS", "뉴 RX": "RX",
+  "ES300h": "ES300h", "ES350": "ES350",
+  // Volvo
+  "볼보 XC90": "XC90",
+  // Others
+  "뉴": "",
+  // McLaren
+  "아투라": "Artura", "720S": "720S", "570S": "570S", "600LT": "600LT",
+  // Chevrolet / GMC
+  "익스프레스밴": "Express Van", "익스프레스": "Express",
+  "타호": "Tahoe", "서버번": "Suburban", "실버라도": "Silverado",
+  // Lexus additional
+  "LS": "LS", "LC": "LC", "LX": "LX", "GS": "GS",
+  // Infiniti
+  "Q50": "Q50", "Q70": "Q70", "QX50": "QX50", "QX60": "QX60", "QX80": "QX80",
 };
 
 // Korean badge/trim word translations
@@ -297,14 +321,21 @@ function parseCar(raw) {
   // Final pass: handle generation/seat patterns and strip any leftover Korean
   title = title.replace(/(\d+)세대/g, "Gen $1");
   title = title.replace(/(\d+)인승/g, "$1-seat");
+  // Check MODEL_MAP for any remaining Korean substrings
+  for (const key of Object.keys(MODEL_MAP)) {
+    if (/[\uAC00-\uD7A3]/.test(key) && title.includes(key)) {
+      title = title.replace(key, MODEL_MAP[key]);
+    }
+  }
   // Translate any remaining Korean words using BADGE_WORD_MAP
   title = title.split(/\s+/).map(function(w) {
     return BADGE_WORD_MAP[w] !== undefined ? BADGE_WORD_MAP[w] : w;
   }).join(" ");
   // Strip remaining Korean characters entirely
   title = title.replace(/[\uAC00-\uD7A3\u3130-\u318F\u1100-\u11FF]+/g, "");
-  // Remove empty parentheses left after Korean removal
+  // Remove empty parentheses and stray symbols left after Korean removal
   title = title.replace(/\(\s*\)/g, "");
+  title = title.replace(/\s+\+\s+/g, " ");
   title = title.replace(/\s+/g, " ").trim();
 
   if (!title || title.length < 2) return null;
