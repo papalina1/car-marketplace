@@ -134,6 +134,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                     value={car.report.myCarAccident?.count
                       ? `${car.report.myCarAccident.count} herë`
                       : "Nuk ekziston"}
+                    amount={car.report.myCarAccident?.amount ?? null}
                     ok={!car.report.myCarAccident?.count}
                   />
                   <ReportCell
@@ -141,6 +142,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                     value={car.report.otherCarAccident?.count
                       ? `${car.report.otherCarAccident.count} herë`
                       : "Nuk ekziston"}
+                    amount={car.report.otherCarAccident?.amount ?? null}
                     ok={!car.report.otherCarAccident?.count}
                   />
                   {car.report.ownerChanges !== null && (
@@ -309,7 +311,14 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   );
 }
 
-function ReportCell({ label, value, ok }: { label: string; value: string; ok: boolean }) {
+function kwonToEur(amount: string): string {
+  const digits = amount.replace(/[^\d]/g, "");
+  if (!digits) return "";
+  const eur = Math.round(parseInt(digits) / 1741.54);
+  return eur.toLocaleString("de-DE") + " €";
+}
+
+function ReportCell({ label, value, amount, ok }: { label: string; value: string; amount?: string | null; ok: boolean }) {
   return (
     <div
       style={{
@@ -321,6 +330,9 @@ function ReportCell({ label, value, ok }: { label: string; value: string; ok: bo
     >
       <div className="text-xs mb-1.5" style={{ color: "#888" }}>{label}</div>
       <div className="text-sm font-bold" style={{ color: ok ? "#1a7a3a" : "#cc001e" }}>{value}</div>
+      {amount && (
+        <div className="text-xs mt-1" style={{ color: "#cc001e" }}>{kwonToEur(amount)}</div>
+      )}
     </div>
   );
 }
