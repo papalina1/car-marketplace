@@ -236,15 +236,13 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
             {/* Accident Sketch */}
             {car.report && (
               <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px" }}>
-                <div style={{ padding: "14px 20px", borderBottom: "1px solid #e9e9e9" }}>
+                <div className="flex items-center justify-between" style={{ padding: "14px 20px", borderBottom: "1px solid #e9e9e9" }}>
                   <h2 className="font-bold text-sm" style={{ color: "#181818" }}>
                     Skica e Aksidenteve{" "}
-                    <span style={{ color: car.report.sketchParts ? "#cc001e" : "#1a7a3a", fontWeight: 700 }}>
+                    <span style={{ color: car.report.sketchParts ? "#cc001e" : "#1a7a3a" }}>
                       {car.report.sketchParts ?? 0} Pjesë
                     </span>
                   </h2>
-                </div>
-                <div style={{ padding: "14px 20px" }}>
                   <a
                     href={`https://fem.encar.com/cars/report/inspect/${car.id}`}
                     target="_blank"
@@ -252,9 +250,42 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                     className="text-xs"
                     style={{ color: "#cc001e", textDecoration: "none" }}
                   >
-                    Shiko skicën e plotë →
+                    Shiko skicën →
                   </a>
                 </div>
+
+                {/* Repair categories: exchange / sheet metal / welding / corrosion */}
+                {car.report.repairs && (
+                  <div className="grid grid-cols-4" style={{ borderBottom: "1px solid #f5f5f5" }}>
+                    {[
+                      { label: "Zëvendësim", key: "exchange" as const },
+                      { label: "Llamarinë",  key: "sheetMetal" as const },
+                      { label: "Saldim",     key: "welding" as const },
+                      { label: "Korrozion",  key: "corrosion" as const },
+                    ].map(({ label, key }) => {
+                      const val = car.report!.repairs![key] ?? 0;
+                      return (
+                        <div key={key} className="text-center" style={{ padding: "12px 8px", borderRight: "1px solid #f5f5f5" }}>
+                          <div className="text-xs mb-1" style={{ color: "#888" }}>{label}</div>
+                          <div className="font-bold text-sm" style={{ color: val > 0 ? "#cc001e" : "#1a7a3a" }}>
+                            {val}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Sketch diagram screenshot */}
+                {car.report.sketchImageUrl && (
+                  <div style={{ padding: "14px 20px" }}>
+                    <img
+                      src={car.report.sketchImageUrl}
+                      alt="Skica e aksidenteve"
+                      style={{ width: "100%", borderRadius: "4px", border: "1px solid #f0f0f0" }}
+                    />
+                  </div>
+                )}
               </div>
             )}
 

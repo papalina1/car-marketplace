@@ -25,6 +25,8 @@ export interface Car {
     ownerChanges: number | null;
     reportUrl: string;
     sketchParts?: number;
+    sketchImageUrl?: string | null;
+    repairs?: { exchange: number; sheetMetal: number; welding: number; corrosion: number };
     outsidePhotos?: string[];
     insidePhotos?: string[];
   } | null;

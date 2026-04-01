@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 
 const OUTPUT_PATH = path.join(process.cwd(), "cars.json");
+const INSPECT_DIR = path.join(process.cwd(), "public", "inspect");
+if (!fs.existsSync(INSPECT_DIR)) fs.mkdirSync(INSPECT_DIR, { recursive: true });
 const IMAGE_BASE = "https://ci.encar.com";
 const TOTAL_CARS = 20; // Change to 2000 when going live
 const PAGE_SIZE = 20;
@@ -489,16 +491,61 @@ async function fetchCarReport(browser, carId) {
     await page.waitForTimeout(1500);
 
     // ── Extract inspection data BEFORE switching to accident tab ──────────
-    let inspectData = { sketchParts: 0, outsidePhotos: [], insidePhotos: [] };
+    let inspectData = { sketchParts: 0, outsidePhotos: [], insidePhotos: [], repairs: { exchange: 0, sheetMetal: 0, welding: 0, corrosion: 0 } };
+    let sketchImageUrl = null;
+
+    // Screenshot the car body sketch diagram
+    try {
+      // Candidates for the sketch container — try most specific first
+      const sketchSelectors = [
+        ".wrap_diagram", ".car_diagram", ".diagram_wrap",
+        "[class*='diagram']", "[class*='sketch']",
+        "canvas",
+        ".inspection_body", "[class*='inspect_body']",
+        ".wrap_car_img", "[class*='car_img']",
+      ];
+      let sketchEl = null;
+      for (const sel of sketchSelectors) {
+        const el = await page.$(sel);
+        if (el) { sketchEl = el; break; }
+      }
+      const sketchPath = path.join(INSPECT_DIR, carId + "_sketch.png");
+      if (sketchEl) {
+        await sketchEl.screenshot({ path: sketchPath });
+      } else {
+        // Fallback: screenshot the top portion of the page (where diagram usually lives)
+        await page.screenshot({ path: sketchPath, clip: { x: 0, y: 80, width: 900, height: 500 } });
+      }
+      sketchImageUrl = "/inspect/" + carId + "_sketch.png";
+    } catch(_e) {}
+
     try {
       inspectData = await page.evaluate(function() {
-        var result = { sketchParts: 0, outsidePhotos: [], insidePhotos: [] };
+        var result = { sketchParts: 0, outsidePhotos: [], insidePhotos: [], repairs: { exchange: 0, sheetMetal: 0, welding: 0, corrosion: 0 } };
 
-        // 1. Count damaged body-panel spots ("개소" = places/spots)
         var bodyText = document.body.innerText;
-        var partsMatch = bodyText.match(/(\d+)\s*개소/);
-        if (partsMatch) result.sketchParts = parseInt(partsMatch[1]);
 
+        // 1. Repair category counts (교환/판금/용접/부식)
+        function countCategory(label) {
+          var regex = new RegExp(label + "[^0-9]*(\\d+)");
+          var m = bodyText.match(regex);
+          return m ? parseInt(m[1]) : 0;
+        }
+        result.repairs.exchange   = countCategory("교환");
+        result.repairs.sheetMetal = countCategory("판금");
+        result.repairs.welding    = countCategory("용접");
+        result.repairs.corrosion  = countCategory("부식");
+
+        // Total damaged spots: sum of repair categories
+        result.sketchParts = result.repairs.exchange + result.repairs.sheetMetal + result.repairs.welding + result.repairs.corrosion;
+
+        // Fallback: "N개소" text
+        if (!result.sketchParts) {
+          var partsMatch = bodyText.match(/(\d+)\s*개소/);
+          if (partsMatch) result.sketchParts = parseInt(partsMatch[1]);
+        }
+
+        // Fallback: active damage elements
         if (!result.sketchParts) {
           var activeEls = document.querySelectorAll(
             ".item_accident.on, .part_item.on, [class*='accident_on'], [class*='damage_on']"
@@ -606,6 +653,8 @@ async function fetchCarReport(browser, carId) {
 
     // Attach inspection data
     report.sketchParts = inspectData.sketchParts || 0;
+    report.sketchImageUrl = sketchImageUrl;
+    report.repairs = inspectData.repairs || { exchange: 0, sheetMetal: 0, welding: 0, corrosion: 0 };
     report.outsidePhotos = inspectData.outsidePhotos || [];
     report.insidePhotos = inspectData.insidePhotos || [];
 
