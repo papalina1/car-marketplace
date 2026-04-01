@@ -624,7 +624,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand, totalCars }: 
               <div className="text-xs mt-1" style={{ color: "#888" }}>Vite eksperiencë</div>
             </div>
             <div className="text-center" style={{ padding: "16px 24px", border: "1px solid #e9e9e9", borderRadius: "6px", minWidth: "120px" }}>
-              <div className="text-2xl font-black" style={{ color: "#cc001e" }}>100+</div>
+              <div className="text-2xl font-black" style={{ color: "#cc001e" }}>500+</div>
               <div className="text-xs mt-1" style={{ color: "#888" }}>Vetura të shitura</div>
             </div>
           </div>
