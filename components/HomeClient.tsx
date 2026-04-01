@@ -7,6 +7,7 @@ interface Props {
   brands: string[];
   fuels: string[];
   modelsByBrand: Record<string, string[]>;
+  totalCars: number;
 }
 
 const KM_OPTIONS = [
@@ -22,7 +23,47 @@ const KM_OPTIONS = [
   { value: "300000", label: "300,000 km" },
 ];
 
-const YEARS = ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"];
+const YEARS = ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"];
+
+const PRICE_OPTIONS = [
+  { value: "5000",  label: "5,000 €" },
+  { value: "8000",  label: "8,000 €" },
+  { value: "10000", label: "10,000 €" },
+  { value: "15000", label: "15,000 €" },
+  { value: "20000", label: "20,000 €" },
+  { value: "25000", label: "25,000 €" },
+  { value: "30000", label: "30,000 €" },
+  { value: "40000", label: "40,000 €" },
+  { value: "50000", label: "50,000 €" },
+  { value: "75000", label: "75,000 €" },
+];
+
+const BODY_TYPES = [
+  "Sedan", "SUV", "Hatchback", "Coupe", "Wagon", "Minivan", "Pickup", "Cabrio",
+];
+
+const SEAT_OPTIONS = ["2", "4", "5", "6", "7", "8", "9+"];
+
+const COLORS = [
+  { label: "Argjend",    value: "argjend",    hex: "#C0C0C0" },
+  { label: "Vjollcë",    value: "vjollce",    hex: "#9B59B6" },
+  { label: "Portokalli", value: "portokalli", hex: "#FF8C00" },
+  { label: "Gjelbër",   value: "gjelbr",     hex: "#27AE60" },
+  { label: "Kuq",        value: "kuq",        hex: "#CC001E" },
+  { label: "Ari",        value: "ari",        hex: "#D4AF37" },
+  { label: "Gri i errët",value: "gri-erret", hex: "#555555" },
+  { label: "Kafe",       value: "kafe",       hex: "#8B4513" },
+  { label: "Hiri",       value: "hiri",       hex: "#9E9E9E" },
+  { label: "Turkuaz",    value: "turkuaz",    hex: "#00BCD4" },
+  { label: "Kaltër",    value: "kaltr",      hex: "#1E90FF" },
+  { label: "Bronz",      value: "bronz",      hex: "#CD7F32" },
+  { label: "Bardhë",    value: "bardh",      hex: "#FFFFFF", border: true },
+  { label: "Krem",       value: "krem",       hex: "#FFF8DC", border: true },
+  { label: "Zi",         value: "zi",         hex: "#1A1A1A" },
+  { label: "Verdhë",    value: "verdh",      hex: "#F1C40F" },
+  { label: "Bezh",       value: "bezh",       hex: "#D7C9A7", border: true },
+  { label: "Rozë",      value: "roze",       hex: "#FF85A1" },
+];
 
 const FEATURED_BRANDS = [
   { name: "Audi",          logo: "https://cdn.jsdelivr.net/gh/filippofilip95/car-logos-dataset@master/logos/thumb/audi.png" },
@@ -70,25 +111,40 @@ const selectStyle: React.CSSProperties = {
   backgroundPosition: "right 9px center",
 };
 
-export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
+export default function HomeClient({ brands, fuels, modelsByBrand, totalCars }: Props) {
   const router = useRouter();
-  const [brand, setBrand]       = useState("");
-  const [model, setModel]       = useState("");
-  const [fuel, setFuel]         = useState("");
-  const [yearFrom, setYearFrom] = useState("");
-  const [kmFrom, setKmFrom]     = useState("");
-  const [kmTo, setKmTo]         = useState("");
+  const [brand, setBrand]           = useState("");
+  const [model, setModel]           = useState("");
+  const [fuel, setFuel]             = useState("");
+  const [yearFrom, setYearFrom]     = useState("");
+  const [yearTo, setYearTo]         = useState("");
+  const [kmFrom, setKmFrom]         = useState("");
+  const [kmTo, setKmTo]             = useState("");
+  const [priceFrom, setPriceFrom]       = useState("");
+  const [priceTo, setPriceTo]           = useState("");
+  const [bodyType, setBodyType]         = useState("");
+  const [seats, setSeats]               = useState("");
+  const [transmission, setTransmission] = useState("");
+  const [color, setColor]               = useState("");
+  const [showDetailed, setShowDetailed] = useState(false);
 
   const models = brand ? (modelsByBrand[brand] || []) : [];
 
   function handleSearch() {
     const params = new URLSearchParams();
-    if (brand)    params.set("brand",    brand);
-    if (model)    params.set("model",    model);
-    if (fuel)     params.set("fuel",     fuel);
-    if (yearFrom) params.set("yearFrom", yearFrom);
-    if (kmFrom)   params.set("kmFrom",   kmFrom);
-    if (kmTo)     params.set("kmTo",     kmTo);
+    if (brand)      params.set("brand",      brand);
+    if (model)      params.set("model",      model);
+    if (fuel)       params.set("fuel",       fuel);
+    if (yearFrom)   params.set("yearFrom",   yearFrom);
+    if (yearTo)     params.set("yearTo",     yearTo);
+    if (kmFrom)     params.set("kmFrom",     kmFrom);
+    if (kmTo)       params.set("kmTo",       kmTo);
+    if (priceFrom)    params.set("priceFrom",    priceFrom);
+    if (priceTo)      params.set("priceTo",      priceTo);
+    if (bodyType)     params.set("bodyType",     bodyType);
+    if (seats)        params.set("seats",        seats);
+    if (transmission) params.set("transmission", transmission);
+    if (color)        params.set("color",        color);
     router.push("/stock?" + params.toString());
   }
 
@@ -157,7 +213,10 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
             <h1 className="text-2xl font-bold" style={{ color: "#181818", letterSpacing: "-0.5px" }}>
               Gjeni veturën tuaj të importit
             </h1>
-            <p className="text-sm mt-1" style={{ color: "#888" }}>Importim direkt nga Korea e Jugut — 2 muaj garancion</p>
+            <p className="text-sm mt-1" style={{ color: "#888" }}>
+              <span className="font-bold" style={{ color: "#cc001e" }}>{totalCars.toLocaleString("de-DE")}</span>
+              {" "}Vetura — Importim direkt nga Korea e Jugut
+            </p>
           </div>
 
           {/* Search card */}
@@ -212,7 +271,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
                   <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Karburanti</label>
                   <select value={fuel} onChange={(e) => setFuel(e.target.value)} style={selectStyle}>
                     <option value="">Karburanti</option>
-                    {fuels.map((f) => <option key={f} value={f}>{f}</option>)}
+                    {fuels.map((f) => <option key={f} value={f}>{f === "Gasoline" ? "Benzinë" : f === "Diesel" ? "Naftë" : f}</option>)}
                   </select>
                 </div>
                 <div>
@@ -237,6 +296,186 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
                   </select>
                 </div>
               </div>
+
+              {/* Kërkim i Detajuar toggle */}
+              <div className="mt-4">
+                <button
+                  onClick={() => setShowDetailed(!showDetailed)}
+                  className="text-xs font-semibold flex items-center gap-1"
+                  style={{ background: "none", border: "none", color: "#cc001e", cursor: "pointer", padding: 0 }}
+                >
+                  {showDetailed ? "▲" : "▼"} Kërkim i Detajuar
+                </button>
+              </div>
+
+              {/* Detailed filters */}
+              {showDetailed && (
+                <div className="mt-4 pt-4" style={{ borderTop: "1px solid #f0f0f0" }}>
+
+                  {/* Row 1: Prodhuesi, Modeli, Lloji i Modelit, Karburanti */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Prodhuesi</label>
+                      <select value={brand} onChange={(e) => { setBrand(e.target.value); setModel(""); }} style={selectStyle}>
+                        <option value="">Të gjitha</option>
+                        {brands.map((b) => <option key={b} value={b}>{b}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Modeli</label>
+                      <select value={model} onChange={(e) => setModel(e.target.value)} disabled={models.length === 0} style={{ ...selectStyle, color: models.length === 0 ? "#bbb" : "#333" }}>
+                        <option value="">Të gjitha</option>
+                        {models.map((m) => <option key={m} value={m}>{m}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Lloji i Modelit</label>
+                      <select value={bodyType} onChange={(e) => setBodyType(e.target.value)} style={selectStyle}>
+                        <option value="">Të gjitha</option>
+                        {BODY_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Karburanti</label>
+                      <select value={fuel} onChange={(e) => setFuel(e.target.value)} style={selectStyle}>
+                        <option value="">Të gjitha</option>
+                        {fuels.map((f) => <option key={f} value={f}>{f === "Gasoline" ? "Benzinë" : f === "Diesel" ? "Naftë" : f}</option>)}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Row 2: Viti, KM, Çmimi */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Viti nga</label>
+                      <select value={yearFrom} onChange={(e) => setYearFrom(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Viti deri</label>
+                      <select value={yearTo} onChange={(e) => setYearTo(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Kilometrazhi nga</label>
+                      <select value={kmFrom} onChange={(e) => setKmFrom(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {KM_OPTIONS.map((k) => <option key={k.value} value={k.value}>{k.label}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Kilometrazhi deri</label>
+                      <select value={kmTo} onChange={(e) => setKmTo(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {KM_OPTIONS.map((k) => <option key={k.value} value={k.value}>{k.label}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Çmimi nga</label>
+                      <select value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {PRICE_OPTIONS.map((p) => <option key={p.value} value={p.value}>{p.label}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Çmimi deri</label>
+                      <select value={priceTo} onChange={(e) => setPriceTo(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {PRICE_OPTIONS.map((p) => <option key={p.value} value={p.value}>{p.label}</option>)}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Row 3: Ulëset + Marshi */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Numri i ulëseve</label>
+                      <select value={seats} onChange={(e) => setSeats(e.target.value)} style={selectStyle}>
+                        <option value="">Zgjedh...</option>
+                        {SEAT_OPTIONS.map((s) => <option key={s} value={s}>{s} ulëse</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#666" }}>Marshi</label>
+                      <div className="flex gap-2">
+                        {["Automatik", "Manual"].map((t) => (
+                          <button
+                            key={t}
+                            onClick={() => setTransmission(transmission === t ? "" : t)}
+                            className="text-xs font-medium flex-1"
+                            style={{
+                              padding: "8px 6px",
+                              borderRadius: "4px",
+                              border: `1px solid ${transmission === t ? "#cc001e" : "#d9d9d9"}`,
+                              backgroundColor: transmission === t ? "#fff5f5" : "#fff",
+                              color: transmission === t ? "#cc001e" : "#555",
+                              cursor: "pointer",
+                              transition: "all .15s",
+                            }}
+                          >
+                            {t}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 4: Ngjyra e jashtme */}
+                  <div className="mb-5">
+                    <label className="block text-xs font-medium mb-2" style={{ color: "#666" }}>Ngjyra e jashtme</label>
+                    <div className="flex flex-wrap gap-2">
+                      {COLORS.map((c) => (
+                        <button
+                          key={c.value}
+                          onClick={() => setColor(color === c.value ? "" : c.value)}
+                          title={c.label}
+                          style={{
+                            width: "28px",
+                            height: "28px",
+                            borderRadius: "50%",
+                            backgroundColor: c.hex,
+                            border: color === c.value
+                              ? "3px solid #cc001e"
+                              : `2px solid ${(c as any).border ? "#ccc" : "transparent"}`,
+                            cursor: "pointer",
+                            outline: color === c.value ? "2px solid #fff" : "none",
+                            outlineOffset: "-4px",
+                            transition: "transform .1s",
+                            transform: color === c.value ? "scale(1.2)" : "scale(1)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                    {color && (
+                      <div className="text-xs mt-1.5" style={{ color: "#cc001e" }}>
+                        {COLORS.find((c) => c.value === color)?.label} — <button onClick={() => setColor("")} style={{ background: "none", border: "none", color: "#999", cursor: "pointer", fontSize: "11px", padding: 0 }}>Hiq ✕</button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Detailed search button */}
+                  <button
+                    onClick={handleSearch}
+                    className="text-white font-semibold text-sm w-full"
+                    style={{
+                      backgroundColor: "#cc001e",
+                      border: "none",
+                      borderRadius: "4px",
+                      padding: "12px 0",
+                      cursor: "pointer",
+                      transition: "background .15s",
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#a0001a")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#cc001e")}
+                  >
+                    Kërko Vetura
+                  </button>
+                </div>
+              )}
 
               <div className="flex items-center gap-3 mt-4">
                 <button
@@ -281,7 +520,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
       <section style={{ backgroundColor: "#fff", padding: "36px 0" }}>
         <div className="max-w-[1280px] mx-auto px-5">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold" style={{ color: "#181818" }}>Veturat në Stok</h2>
+            <h2 className="text-base font-bold" style={{ color: "#181818" }}>Markat Më Të Kërkuara</h2>
             <a href="/stock" className="text-xs font-medium" style={{ color: "#cc001e", textDecoration: "none" }}>
               Shiko të gjitha →
             </a>
@@ -389,9 +628,8 @@ export default function HomeClient({ brands, fuels, modelsByBrand }: Props) {
               <p className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: "#aaa" }}>Kontakt</p>
               <div className="space-y-2 text-sm" style={{ color: "#777" }}>
                 <p><a href="tel:+38348800006" style={{ color: "#777", textDecoration: "none" }}>+383 48 800 006</a></p>
-                <p><a href="tel:+38349528990" style={{ color: "#777", textDecoration: "none" }}>+383 49 528 990</a></p>
-                <p style={{ color: "#777" }}>Fushë Kosovë, Rr. Nënë Tereza</p>
-                <p style={{ color: "#777" }}>premiumcars_korea</p>
+                <p style={{ color: "#777" }}>Rr. Holger Petersen</p>
+                <p style={{ color: "#777" }}>Prishtinë</p>
               </div>
             </div>
             <div>

@@ -353,6 +353,9 @@ function parseCar(raw) {
     images.push(IMAGE_BASE + raw.Photo + "001.jpg");
   }
 
+  const yearNum = parseInt(String(raw.Year || "0").slice(0, 4), 10);
+  if (yearNum < 2016) return null;
+
   return {
     id, title, brand, model,
     year: formatYear(raw.Year),

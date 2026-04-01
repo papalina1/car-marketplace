@@ -43,16 +43,25 @@ const selectStyle: React.CSSProperties = {
   backgroundPosition: "right 9px center",
 };
 
+const fuelLabel = (f: string) => f === "Gasoline" ? "Benzinë" : f === "Diesel" ? "Naftë" : f;
+
 export default function StockClient({ allCars }: Props) {
   const searchParams = useSearchParams();
   const router       = useRouter();
 
-  const brand    = searchParams.get("brand")    || "";
-  const model    = searchParams.get("model")    || "";
-  const fuel     = searchParams.get("fuel")     || "";
-  const yearFrom = searchParams.get("yearFrom") || "";
-  const kmFrom   = searchParams.get("kmFrom")   || "";
-  const kmTo     = searchParams.get("kmTo")     || "";
+  const brand      = searchParams.get("brand")      || "";
+  const model      = searchParams.get("model")      || "";
+  const fuel       = searchParams.get("fuel")       || "";
+  const yearFrom   = searchParams.get("yearFrom")   || "";
+  const yearTo     = searchParams.get("yearTo")     || "";
+  const kmFrom     = searchParams.get("kmFrom")     || "";
+  const kmTo       = searchParams.get("kmTo")       || "";
+  const priceFrom    = searchParams.get("priceFrom")    || "";
+  const priceTo      = searchParams.get("priceTo")      || "";
+  const bodyType     = searchParams.get("bodyType")     || "";
+  const seats        = searchParams.get("seats")        || "";
+  const transmission = searchParams.get("transmission") || "";
+  const color        = searchParams.get("color")        || "";
 
   const [sort, setSort] = useState<SortKey>("default");
   const [filtered, setFiltered] = useState<Car[]>([]);
@@ -66,10 +75,26 @@ export default function StockClient({ allCars }: Props) {
 
     if (yearFrom) {
       result = result.filter((c) => {
-        const y = parseInt(c.year?.slice(0, 2) || "0", 10) + 2000;
+        const y = parseInt(c.year?.slice(0, 4) || "0", 10);
         return y >= parseInt(yearFrom, 10);
       });
     }
+    if (yearTo) {
+      result = result.filter((c) => {
+        const y = parseInt(c.year?.slice(0, 4) || "0", 10);
+        return y <= parseInt(yearTo, 10);
+      });
+    }
+    if (priceFrom) {
+      result = result.filter((c) => toEur(c.price) >= parseInt(priceFrom, 10));
+    }
+    if (priceTo) {
+      result = result.filter((c) => toEur(c.price) <= parseInt(priceTo, 10));
+    }
+    if (bodyType)     result = result.filter((c) => (c as any).bodyType     === bodyType);
+    if (seats)        result = result.filter((c) => (c as any).seats        === seats);
+    if (transmission) result = result.filter((c) => (c as any).transmission === transmission);
+    if (color)        result = result.filter((c) => (c as any).color        === color);
     if (kmFrom) {
       result = result.filter((c) => {
         const km = parseInt(c.mileage?.replace(/[^0-9]/g, "") || "0", 10);
@@ -93,15 +118,22 @@ export default function StockClient({ allCars }: Props) {
     });
 
     setFiltered(result);
-  }, [allCars, brand, model, fuel, yearFrom, kmFrom, kmTo, sort]);
+  }, [allCars, brand, model, fuel, yearFrom, yearTo, kmFrom, kmTo, priceFrom, priceTo, bodyType, seats, transmission, color, sort]);
 
   const activeFilters = [
     brand    && { key: "brand",    label: brand },
     model    && { key: "model",    label: model },
-    fuel     && { key: "fuel",     label: fuel },
-    yearFrom && { key: "yearFrom", label: `Nga ${yearFrom}` },
-    kmFrom   && { key: "kmFrom",   label: `KM ≥ ${Number(kmFrom).toLocaleString()}` },
-    kmTo     && { key: "kmTo",     label: `KM ≤ ${Number(kmTo).toLocaleString()}` },
+    fuel     && { key: "fuel",     label: fuelLabel(fuel) },
+    yearFrom  && { key: "yearFrom",  label: `Viti nga ${yearFrom}` },
+    yearTo    && { key: "yearTo",    label: `Viti deri ${yearTo}` },
+    kmFrom    && { key: "kmFrom",    label: `KM ≥ ${Number(kmFrom).toLocaleString()}` },
+    kmTo      && { key: "kmTo",      label: `KM ≤ ${Number(kmTo).toLocaleString()}` },
+    priceFrom    && { key: "priceFrom",    label: `Çmimi nga ${Number(priceFrom).toLocaleString()} €` },
+    priceTo      && { key: "priceTo",      label: `Çmimi deri ${Number(priceTo).toLocaleString()} €` },
+    bodyType     && { key: "bodyType",     label: bodyType },
+    seats        && { key: "seats",        label: `${seats} ulëse` },
+    transmission && { key: "transmission", label: transmission },
+    color        && { key: "color",        label: color },
   ].filter(Boolean) as { key: string; label: string }[];
 
   function removeFilter(key: string) {
@@ -351,7 +383,7 @@ function CarCard({ car }: { car: Car }) {
           <div style={{ fontSize: "11px", color: "#999", display: "flex", flexWrap: "wrap", gap: "4px 8px", marginBottom: "8px" }}>
             {car.year     && <span>{car.year}</span>}
             {car.mileage  && <span>{car.mileage}</span>}
-            {car.fuel     && <span>{car.fuel}</span>}
+            {car.fuel     && <span>{fuelLabel(car.fuel)}</span>}
           </div>
           <div style={{ fontSize: "14px", fontWeight: 700, color: "#cc001e" }}>
             {car.price > 0 ? `${toEur(car.price).toLocaleString("de-DE")} €` : "Me kërkesë"}

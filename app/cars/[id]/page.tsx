@@ -1,4 +1,4 @@
-import { getAllCars, getCarById } from "@/lib/cars";
+import { getAllCars, getCarById, Car } from "@/lib/cars";
 import { toEur } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -22,13 +22,19 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   const car = getCarById(id);
   if (!car) return notFound();
 
+  const allCars = getAllCars();
+  const similarCars = allCars
+    .filter((c) => c.id !== car.id && c.brand === car.brand && c.model === car.model && c.title !== car.title)
+    .slice(0, 4);
+
+  const fuelLabel = (f: string) => f === "Gasoline" ? "Benzinë" : f === "Diesel" ? "Naftë" : f;
+
   const specs = [
     { label: "Marka",                  value: car.brand    },
     { label: "Modeli",                 value: car.model    },
     { label: "Data e regjistrimit",    value: car.year     },
     { label: "Kilometrazha",           value: car.mileage  },
-    { label: "Lëndë djegëse",          value: car.fuel     },
-    { label: "Lokacioni (Kore)",       value: car.location },
+    { label: "Lëndë djegëse",          value: fuelLabel(car.fuel) },
   ];
 
   const siteUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
@@ -47,8 +53,14 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               <span className="font-black text-xl tracking-tight" style={{ color: "#cc001e" }}>PREMIUM</span>
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
-            <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
-              +383 48 800 006
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-semibold"
+              style={{ color: "#1a7a3a", textDecoration: "none", backgroundColor: "#f0fff4", border: "1px solid #d3f4e0", borderRadius: "4px", padding: "4px 10px" }}
+            >
+              💬 WhatsApp
             </a>
           </div>
         </div>
@@ -179,7 +191,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               </div>
               {car.price > 0 && (
                 <div className="text-xs" style={{ color: "#aaa" }}>
-                  Çmimi përfshin transport +1,200 € dhe taksa importi
+                  Çmimi total deri në Durrës
                 </div>
               )}
 
@@ -198,22 +210,6 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                   }}
                 >
                   Kontakto për veturën
-                </a>
-                <a
-                  href={car.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full text-sm font-medium"
-                  style={{
-                    border: "1px solid #d9d9d9",
-                    borderRadius: "4px",
-                    padding: "10px 16px",
-                    textDecoration: "none",
-                    color: "#555",
-                    transition: "border-color .15s",
-                  }}
-                >
-                  Shiko në Encar.com ↗
                 </a>
               </div>
             </div>
@@ -237,24 +233,6 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                   <span>📞</span>
                   <div>
                     <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 48 800 006</div>
-                    <div className="text-xs" style={{ color: "#aaa" }}>Telefono tani</div>
-                  </div>
-                </a>
-                <a
-                  href="tel:+38349528990"
-                  className="flex items-center gap-3 text-sm"
-                  style={{
-                    padding: "10px 12px",
-                    backgroundColor: "#f9f9f9",
-                    borderRadius: "4px",
-                    textDecoration: "none",
-                    color: "#333",
-                    border: "1px solid #f0f0f0",
-                  }}
-                >
-                  <span>📞</span>
-                  <div>
-                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 49 528 990</div>
                     <div className="text-xs" style={{ color: "#aaa" }}>Telefono tani</div>
                   </div>
                 </a>
@@ -289,8 +267,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                 >
                   <span>📍</span>
                   <div>
-                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>Fushë Kosovë</div>
-                    <div className="text-xs" style={{ color: "#aaa" }}>Rr. Nënë Tereza</div>
+                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>Prishtinë</div>
                   </div>
                 </div>
               </div>
@@ -308,6 +285,18 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         </div>
       </div>
 
+      {/* Similar cars */}
+      {similarCars.length > 0 && (
+        <div className="max-w-[1280px] mx-auto px-5 pb-10">
+          <h2 className="font-bold text-base mb-4" style={{ color: "#181818" }}>Vetura të ngjashme</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {similarCars.map((sc) => (
+              <SimilarCarCard key={sc.id} car={sc} />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer style={{ backgroundColor: "#1a1a1a", borderTop: "1px solid #222", padding: "20px 0", marginTop: "48px" }}>
         <div className="max-w-[1280px] mx-auto px-5 text-center text-xs" style={{ color: "#555" }}>
@@ -315,6 +304,36 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         </div>
       </footer>
     </div>
+  );
+}
+
+function SimilarCarCard({ car }: { car: Car }) {
+  return (
+    <a
+      href={`/cars/${car.id}`}
+      className="similar-card"
+      style={{ textDecoration: "none", color: "inherit", display: "block" }}
+    >
+      <div
+        className="bg-white similar-card-inner"
+        style={{ border: "1px solid #e9e9e9", borderRadius: "6px", overflow: "hidden" }}
+      >
+        <img
+          src={car.image}
+          alt={car.title}
+          style={{ width: "100%", height: "140px", objectFit: "cover" }}
+        />
+        <div style={{ padding: "10px 12px" }}>
+          <div className="text-xs font-semibold" style={{ color: "#181818", marginBottom: "4px", lineHeight: "1.3" }}>
+            {car.title}
+          </div>
+          <div className="text-xs" style={{ color: "#888" }}>{car.year} · {car.mileage}</div>
+          <div className="text-sm font-black mt-2" style={{ color: "#cc001e" }}>
+            {car.price > 0 ? `${toEur(car.price).toLocaleString("de-DE")} €` : "Me kërkesë"}
+          </div>
+        </div>
+      </div>
+    </a>
   );
 }
 
