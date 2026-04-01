@@ -24,6 +24,9 @@ export interface Car {
     floodAmount?: string | null;
     ownerChanges: number | null;
     reportUrl: string;
+    sketchParts?: number;
+    outsidePhotos?: string[];
+    insidePhotos?: string[];
   } | null;
 }
 

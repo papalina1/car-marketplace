@@ -232,6 +232,69 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                 </div>
               </div>
             )}
+
+            {/* Accident Sketch */}
+            {car.report && (
+              <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px" }}>
+                <div style={{ padding: "14px 20px", borderBottom: "1px solid #e9e9e9" }}>
+                  <h2 className="font-bold text-sm" style={{ color: "#181818" }}>
+                    Skica e Aksidenteve{" "}
+                    <span style={{ color: car.report.sketchParts ? "#cc001e" : "#1a7a3a", fontWeight: 700 }}>
+                      {car.report.sketchParts ?? 0} Pjesë
+                    </span>
+                  </h2>
+                </div>
+                <div style={{ padding: "14px 20px" }}>
+                  <a
+                    href={`https://fem.encar.com/cars/report/inspect/${car.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs"
+                    style={{ color: "#cc001e", textDecoration: "none" }}
+                  >
+                    Shiko skicën e plotë →
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Outside Photos */}
+            {car.report?.outsidePhotos && car.report.outsidePhotos.length > 0 && (
+              <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px" }}>
+                <div style={{ padding: "14px 20px", borderBottom: "1px solid #e9e9e9" }}>
+                  <h2 className="font-bold text-sm" style={{ color: "#181818" }}>Pamja e Jashtme</h2>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3" style={{ padding: "14px 20px", gap: "8px" }}>
+                  {car.report.outsidePhotos.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Jashtme ${i + 1}`}
+                      style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", borderRadius: "4px", border: "1px solid #f0f0f0" }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Inside Photos */}
+            {car.report?.insidePhotos && car.report.insidePhotos.length > 0 && (
+              <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px" }}>
+                <div style={{ padding: "14px 20px", borderBottom: "1px solid #e9e9e9" }}>
+                  <h2 className="font-bold text-sm" style={{ color: "#181818" }}>Pamja e Brendshme</h2>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3" style={{ padding: "14px 20px", gap: "8px" }}>
+                  {car.report.insidePhotos.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Brendshme ${i + 1}`}
+                      style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", borderRadius: "4px", border: "1px solid #f0f0f0" }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
         </div>

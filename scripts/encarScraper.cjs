@@ -488,6 +488,59 @@ async function fetchCarReport(browser, carId) {
 
     await page.waitForTimeout(1500);
 
+    // ── Extract inspection data BEFORE switching to accident tab ──────────
+    let inspectData = { sketchParts: 0, outsidePhotos: [], insidePhotos: [] };
+    try {
+      inspectData = await page.evaluate(function() {
+        var result = { sketchParts: 0, outsidePhotos: [], insidePhotos: [] };
+
+        // 1. Count damaged body-panel spots ("개소" = places/spots)
+        var bodyText = document.body.innerText;
+        var partsMatch = bodyText.match(/(\d+)\s*개소/);
+        if (partsMatch) result.sketchParts = parseInt(partsMatch[1]);
+
+        if (!result.sketchParts) {
+          var activeEls = document.querySelectorAll(
+            ".item_accident.on, .part_item.on, [class*='accident_on'], [class*='damage_on']"
+          );
+          if (activeEls.length) result.sketchParts = activeEls.length;
+        }
+
+        // 2. Collect inspection photos by section heading
+        var allSections = document.querySelectorAll("section, li, div");
+        allSections.forEach(function(sec) {
+          var headingEl = sec.querySelector("h2,h3,h4,[class*='title'],[class*='heading'],[class*='tit']");
+          var heading = headingEl ? headingEl.innerText : "";
+          var isOutside = heading.includes("외관") || heading.includes("외장");
+          var isInside  = heading.includes("내관") || heading.includes("내장");
+          if (!isOutside && !isInside) return;
+          var imgs = sec.querySelectorAll("img[src]");
+          imgs.forEach(function(img) {
+            if (!img.src || img.src.includes("placeholder") || img.src.includes("icon")) return;
+            if (img.clientWidth > 0 && img.clientWidth < 80) return;
+            if (isOutside) result.outsidePhotos.push(img.src);
+            else           result.insidePhotos.push(img.src);
+          });
+        });
+
+        // 3. Fallback: grab all reasonably-sized images and split them
+        if (result.outsidePhotos.length === 0 && result.insidePhotos.length === 0) {
+          var allImgs = Array.from(document.querySelectorAll("img[src]")).filter(function(img) {
+            return img.src && !img.src.includes("placeholder") && !img.src.includes("icon")
+              && img.clientWidth >= 100 && img.clientHeight >= 60;
+          }).map(function(img) { return img.src; });
+
+          if (allImgs.length > 0) {
+            var mid = Math.ceil(allImgs.length / 2);
+            result.outsidePhotos = allImgs.slice(0, mid);
+            result.insidePhotos  = allImgs.slice(mid);
+          }
+        }
+
+        return result;
+      });
+    } catch(_e) {}
+
     // Click insurance tab
     await page.evaluate(function() {
       const links = document.querySelectorAll("a");
@@ -550,6 +603,12 @@ async function fetchCarReport(browser, carId) {
 
     // Fix reportUrl with correct carId
     report.reportUrl = url;
+
+    // Attach inspection data
+    report.sketchParts = inspectData.sketchParts || 0;
+    report.outsidePhotos = inspectData.outsidePhotos || [];
+    report.insidePhotos = inspectData.insidePhotos || [];
+
     return report;
 
   } catch (e) {
