@@ -65,6 +65,7 @@ export default function StockClient({ allCars }: Props) {
 
   const [sort, setSort] = useState<SortKey>("default");
   const [filtered, setFiltered] = useState<Car[]>([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let result = [...allCars];
@@ -153,12 +154,20 @@ export default function StockClient({ allCars }: Props) {
               <span className="font-black text-xl tracking-tight" style={{ color: "#cc001e" }}>PREMIUM</span>
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
             </a>
-            <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>
-              +383 48 800 006
-            </a>
+            <div className="flex items-center gap-3">
+              <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>+383 48 800 006</a>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="sm:hidden"
+                style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 4px", color: "#333", fontSize: "22px", lineHeight: 1 }}
+                aria-label="Menu"
+              >
+                {mobileMenuOpen ? "✕" : "☰"}
+              </button>
+            </div>
           </div>
         </div>
-        <div className="max-w-[1280px] mx-auto px-5">
+        <div className="hidden sm:block max-w-[1280px] mx-auto px-5">
           <nav className="flex items-center gap-1">
             {NAV_LINKS.map(({ label, href }) => (
               <a
@@ -187,6 +196,20 @@ export default function StockClient({ allCars }: Props) {
             ))}
           </nav>
         </div>
+        {mobileMenuOpen && (
+          <div className="sm:hidden" style={{ borderTop: "1px solid #f0f0f0", backgroundColor: "#fff", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+            {NAV_LINKS.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ display: "block", padding: "14px 20px", color: "#333", textDecoration: "none", borderBottom: "1px solid #f5f5f5", fontSize: "14px", fontWeight: 500 }}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* ── Page body ──────────────────────────────────── */}

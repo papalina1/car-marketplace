@@ -3,19 +3,13 @@ import { toEur } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ImageGallery from "@/components/ImageGallery";
+import MobileNav from "@/components/MobileNav";
 
 export async function generateStaticParams() {
   const cars = getAllCars();
   return cars.map((car) => ({ id: car.id }));
 }
 
-const NAV_LINKS = [
-  { label: "BALLINA",             href: "/" },
-  { label: "STOKU",               href: "/stock" },
-  { label: "PROCEDURA E BLERJES", href: "/#procedura" },
-  { label: "RRETH NESH",          href: "/#rreth" },
-  { label: "KONTAKT",             href: "/#kontakt" },
-];
 
 export default async function CarDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -64,26 +58,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
             </a>
           </div>
         </div>
-        <div className="max-w-[1280px] mx-auto px-5">
-          <nav className="flex items-center gap-1">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="block text-sm font-medium"
-                style={{
-                  color: "#555",
-                  padding: "14px 12px",
-                  borderRadius: "6px",
-                  letterSpacing: "-0.2px",
-                  textDecoration: "none",
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
+        <MobileNav activeLabel="STOKU" />
       </header>
 
       <div className="max-w-[1280px] mx-auto px-5 py-6">
@@ -103,6 +78,84 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          {/* Right: price + contact — first in DOM so it shows at top on mobile */}
+          {/* On desktop: lg:order-last pushes it to the right column */}
+          <div className="space-y-4 lg:order-last">
+            {/* Price card */}
+            <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px", padding: "20px" }}>
+              <div className="text-xs mb-1" style={{ color: "#888" }}>Çmimi</div>
+              <div className="text-3xl font-black mb-1" style={{ color: "#cc001e" }}>
+                {car.price > 0 ? `${toEur(car.price).toLocaleString("de-DE")} €` : "Me kërkesë"}
+              </div>
+              {car.price > 0 && (
+                <div className="text-xs" style={{ color: "#aaa" }}>
+                  Çmimi total deri në Durrës
+                </div>
+              )}
+              <div className="mt-5 space-y-2">
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full text-sm font-semibold text-white"
+                  style={{
+                    backgroundColor: "#cc001e",
+                    borderRadius: "4px",
+                    padding: "11px 16px",
+                    textDecoration: "none",
+                    transition: "background .15s",
+                  }}
+                >
+                  Kontakto për veturën
+                </a>
+              </div>
+            </div>
+
+            {/* Contact card */}
+            <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px", padding: "20px" }}>
+              <h2 className="font-bold text-sm mb-4" style={{ color: "#181818" }}>Na Kontaktoni</h2>
+              <div className="space-y-2">
+                <a
+                  href="tel:+38348800006"
+                  className="flex items-center gap-3 text-sm"
+                  style={{ padding: "10px 12px", backgroundColor: "#f9f9f9", borderRadius: "4px", textDecoration: "none", color: "#333", border: "1px solid #f0f0f0" }}
+                >
+                  <span>📞</span>
+                  <div>
+                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 48 800 006</div>
+                    <div className="text-xs" style={{ color: "#aaa" }}>Telefono tani</div>
+                  </div>
+                </a>
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm"
+                  style={{ padding: "10px 12px", backgroundColor: "#f0fff4", borderRadius: "4px", textDecoration: "none", color: "#333", border: "1px solid #d3f4e0" }}
+                >
+                  <span>💬</span>
+                  <div>
+                    <div className="font-semibold text-xs" style={{ color: "#1a7a3a" }}>WhatsApp</div>
+                    <div className="text-xs" style={{ color: "#aaa" }}>Na shkruani</div>
+                  </div>
+                </a>
+                <div
+                  className="flex items-center gap-3 text-sm"
+                  style={{ padding: "10px 12px", backgroundColor: "#f9f9f9", borderRadius: "4px", border: "1px solid #f0f0f0" }}
+                >
+                  <span>📍</span>
+                  <div>
+                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>Prishtinë</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Link href="/stock" className="text-sm" style={{ color: "#888", textDecoration: "none", display: "block", textAlign: "center" }}>
+              ← Kthehu tek Stoku
+            </Link>
+          </div>
 
           {/* Left: gallery + specs */}
           <div className="lg:col-span-2 space-y-5">
@@ -181,107 +234,6 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
             )}
           </div>
 
-          {/* Right: price + contact */}
-          <div className="space-y-4">
-            {/* Price card */}
-            <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px", padding: "20px" }}>
-              <div className="text-xs mb-1" style={{ color: "#888" }}>Çmimi</div>
-              <div className="text-3xl font-black mb-1" style={{ color: "#cc001e" }}>
-                {car.price > 0 ? `${toEur(car.price).toLocaleString("de-DE")} €` : "Me kërkesë"}
-              </div>
-              {car.price > 0 && (
-                <div className="text-xs" style={{ color: "#aaa" }}>
-                  Çmimi total deri në Durrës
-                </div>
-              )}
-
-              <div className="mt-5 space-y-2">
-                <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full text-sm font-semibold text-white"
-                  style={{
-                    backgroundColor: "#cc001e",
-                    borderRadius: "4px",
-                    padding: "11px 16px",
-                    textDecoration: "none",
-                    transition: "background .15s",
-                  }}
-                >
-                  Kontakto për veturën
-                </a>
-              </div>
-            </div>
-
-            {/* Contact card */}
-            <div className="bg-white" style={{ border: "1px solid #e9e9e9", borderRadius: "6px", padding: "20px" }}>
-              <h2 className="font-bold text-sm mb-4" style={{ color: "#181818" }}>Na Kontaktoni</h2>
-              <div className="space-y-2">
-                <a
-                  href="tel:+38348800006"
-                  className="flex items-center gap-3 text-sm"
-                  style={{
-                    padding: "10px 12px",
-                    backgroundColor: "#f9f9f9",
-                    borderRadius: "4px",
-                    textDecoration: "none",
-                    color: "#333",
-                    border: "1px solid #f0f0f0",
-                  }}
-                >
-                  <span>📞</span>
-                  <div>
-                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>+383 48 800 006</div>
-                    <div className="text-xs" style={{ color: "#aaa" }}>Telefono tani</div>
-                  </div>
-                </a>
-                <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm"
-                  style={{
-                    padding: "10px 12px",
-                    backgroundColor: "#f0fff4",
-                    borderRadius: "4px",
-                    textDecoration: "none",
-                    color: "#333",
-                    border: "1px solid #d3f4e0",
-                  }}
-                >
-                  <span>💬</span>
-                  <div>
-                    <div className="font-semibold text-xs" style={{ color: "#1a7a3a" }}>WhatsApp</div>
-                    <div className="text-xs" style={{ color: "#aaa" }}>Na shkruani</div>
-                  </div>
-                </a>
-                <div
-                  className="flex items-center gap-3 text-sm"
-                  style={{
-                    padding: "10px 12px",
-                    backgroundColor: "#f9f9f9",
-                    borderRadius: "4px",
-                    border: "1px solid #f0f0f0",
-                  }}
-                >
-                  <span>📍</span>
-                  <div>
-                    <div className="font-semibold text-xs" style={{ color: "#181818" }}>Prishtinë</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Back link */}
-            <Link
-              href="/stock"
-              className="text-sm"
-              style={{ color: "#888", textDecoration: "none", display: "block", textAlign: "center" }}
-            >
-              ← Kthehu tek Stoku
-            </Link>
-          </div>
         </div>
       </div>
 

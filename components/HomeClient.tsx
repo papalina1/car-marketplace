@@ -127,6 +127,7 @@ export default function HomeClient({ brands, fuels, modelsByBrand, totalCars }: 
   const [transmission, setTransmission] = useState("");
   const [color, setColor]               = useState("");
   const [showDetailed, setShowDetailed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const models = brand ? (modelsByBrand[brand] || []) : [];
 
@@ -162,18 +163,30 @@ export default function HomeClient({ brands, fuels, modelsByBrand, totalCars }: 
               <span className="font-black text-xl tracking-tight" style={{ color: "#181818" }}>CARS</span>
               <span className="text-xs ml-2 hidden sm:inline" style={{ color: "#aaa" }}>Korea Import</span>
             </a>
-            <div className="flex items-center gap-5 text-xs" style={{ color: "#666" }}>
+            {/* Desktop: social + phone */}
+            <div className="hidden sm:flex items-center gap-5 text-xs" style={{ color: "#666" }}>
               <a href="https://www.facebook.com/p/Premium-Cars-Korea-61572215366411/" target="_blank" rel="noopener noreferrer" style={{ transition: "color .15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#cc001e")} onMouseLeave={e => (e.currentTarget.style.color = "#666")}>Facebook</a>
               <a href="https://www.instagram.com/premiumcars_korea/" target="_blank" rel="noopener noreferrer" style={{ transition: "color .15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#cc001e")} onMouseLeave={e => (e.currentTarget.style.color = "#666")}>Instagram</a>
               <a href="https://www.tiktok.com/@premiumcars.korea" target="_blank" rel="noopener noreferrer" style={{ transition: "color .15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#cc001e")} onMouseLeave={e => (e.currentTarget.style.color = "#666")}>TikTok</a>
               <span style={{ color: "#d9d9d9" }}>|</span>
               <a href="tel:+38348800006" className="font-semibold" style={{ color: "#cc001e" }}>+383 48 800 006</a>
             </div>
+            {/* Mobile: phone + hamburger */}
+            <div className="flex items-center gap-3 sm:hidden">
+              <a href="tel:+38348800006" className="text-xs font-semibold" style={{ color: "#cc001e", textDecoration: "none" }}>+383 48 800 006</a>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 4px", color: "#333", fontSize: "22px", lineHeight: 1 }}
+                aria-label="Menu"
+              >
+                {mobileMenuOpen ? "✕" : "☰"}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Main nav */}
-        <div className="max-w-[1280px] mx-auto px-5">
+        {/* Desktop nav */}
+        <div className="hidden sm:block max-w-[1280px] mx-auto px-5">
           <nav className="flex items-center gap-1">
             {NAV_LINKS.map(({ label, href }) => (
               <a
@@ -202,6 +215,22 @@ export default function HomeClient({ brands, fuels, modelsByBrand, totalCars }: 
             ))}
           </nav>
         </div>
+
+        {/* Mobile dropdown menu */}
+        {mobileMenuOpen && (
+          <div className="sm:hidden" style={{ borderTop: "1px solid #f0f0f0", backgroundColor: "#fff", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+            {NAV_LINKS.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ display: "block", padding: "14px 20px", color: "#333", textDecoration: "none", borderBottom: "1px solid #f5f5f5", fontSize: "14px", fontWeight: 500 }}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* ── Search Banner ──────────────────────────────── */}
