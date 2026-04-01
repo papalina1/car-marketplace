@@ -81,7 +81,7 @@ const FEATURED_BRANDS = [
 const STEPS = [
   { num: "01", title: "Gjeni Veturën",           desc: "Zgjedhni veturën tuaj në katalog." },
   { num: "02", title: "Na Kontaktoni",            desc: "Telefon (+383 49 528 990) ose rrjete sociale." },
-  { num: "03", title: "Inspektimi",               desc: "Inspektim profesional në Kore." },
+  { num: "03", title: "Inspektimi",               desc: "Inspektim profesional në Korenë e Jugut." },
   { num: "04", title: "Marrëveshja & Garancioni", desc: "Garancione të shkruara për motor, kambio etj." },
   { num: "05", title: "Porosia",                  desc: "Pagesa e faturës përmes bankës." },
   { num: "06", title: "Dorëzimi",                 desc: "Sipas marrëveshjes me klientin." },
